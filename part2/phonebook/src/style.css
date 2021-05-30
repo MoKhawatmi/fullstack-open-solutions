@@ -1,0 +1,12 @@
+.green{
+    border: 1px solid green;
+    color: green;
+}
+.red{
+    border: 1px solid red;
+    color: red;
+}
+.note{
+    background-color: lightgray;
+    border-radius: 10px;
+}
