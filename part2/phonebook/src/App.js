@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './style.css'
 import axios from 'axios'
 
-let defaultUrl = "http://localhost:3001/persons";
+let defaultUrl = "http://localhost:3001/api/persons";
 
 const AddForm = (props) => {
   return (
@@ -84,7 +84,7 @@ const App = () => {
     })
     console.log(personToDelete)
     
-    axios.delete(`${defaultUrl}/${personToDelete.id}`).then(response => {
+    axios.delete(`${defaultUrl}/${personToDelete._id}`).then(response => {
       console.log(response);
       let newPersonsArray = [...persons];
       newPersonsArray.splice(newPersonsArray.indexOf(personToDelete), 1);
@@ -118,7 +118,8 @@ const App = () => {
       replaceFlag = window.confirm(`${newPerson.name} already exists, replace number?`)
       if (replaceFlag) {
         findPerson.number = newPerson.number;
-        axios.put(`${defaultUrl}/${findPerson.id}`, findPerson).then(response => {
+        console.log(findPerson);
+        axios.put(`${defaultUrl}/${findPerson._id}`, findPerson).then(response => {
           console.log(response);
           let changedArray = [...persons];
           changedArray.splice(changedArray.indexOf(findPerson), 1, response.data);
@@ -128,6 +129,7 @@ const App = () => {
       }
     } else {
       let newObj = { name: newPerson.name, number: newPerson.number, show: true };
+      console.log(newObj);
       axios.post(defaultUrl, newObj).then(response => {
         console.log(response);
         createNoteMsg(`Added ${newPerson.name} successfully`,false);
