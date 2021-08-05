@@ -1,2 +1,1 @@
-DELETE http://localhost:3000/api/blogs/duh20
-content-type: application/json
+DELETE http://localhost:3000/api/blogs/duh4

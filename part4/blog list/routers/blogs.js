@@ -47,6 +47,9 @@ router.delete('/:title', extractUser, (req, res) => {
                                 res.status(400).send(err);
                             });
                         }
+                        else {
+                            res.status(400).send("action not allowed");
+                        }
                     } else {
                         res.status(400).send("action not allowed");
                     }
