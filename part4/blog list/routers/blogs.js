@@ -13,6 +13,32 @@ router.get('/', (request, response) => {
         })
 })
 
+router.put('/like', (req, res) => {
+    let blogId=req.body.blogId;
+    Blog.findById(blogId).then(blog=>{
+        if(blog){
+            blog.likes+=1;
+            new Blog(blog).save().then(response=>{
+                res.status(200).json(response);
+            }).catch(err=>{
+                res.status(400).send(err)    
+            })
+        }else{
+            res.status(400).send("no blog")
+        }
+    })
+})
+
+router.delete('/:id',(req,res)=>{
+    Blog.findByIdAndDelete(req.params.id).then(response=>{
+        Blog.find().then(blogs=>{
+            res.status(200).json(blogs);
+        })
+    }).catch(err=>{
+        res.status(400).send(err);
+    });
+})
+
 router.post('/', extractUser, (req, res) => {
     console.log("user doing the action", req.user);
     if (res.locals.userToken) {

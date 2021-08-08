@@ -1,0 +1,16 @@
+label{
+    display: block;
+}
+
+p{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.viewButton{
+    margin-left: 6px;
+}
+
+.blogPost{
+    margin-top: 3px;
+}

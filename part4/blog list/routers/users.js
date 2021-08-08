@@ -46,8 +46,8 @@ router.post("/login",(req,res)=>{
             bcrypt.compare(password, user.password).then(auth=>{
                 if(auth){
                     let token=createToken(user._id);
-                    res.cookie("userToken",token,{httpOnly:true});
-                    res.status(200).send("login success");
+                    res.cookie("userToken",token,{httpOnly:true,maxAge});
+                    res.status(200).json(user);
                 }else{
                     res.status(400).send("Wrong username or password");
                 }
@@ -56,6 +56,11 @@ router.post("/login",(req,res)=>{
             res.status(400).send("Wrong username or password");
         }
     });
+})
+
+router.get("/logout",(req,res)=>{
+    res.cookie("userToken","",{maxAge:1});
+    res.end();
 })
 
 module.exports=router;

@@ -13,7 +13,7 @@ let usersRouter = require('./routers/users');
 const dbName = process.env.DB_NAME;
 const dbUser = process.env.DB_USER;
 const dbPass = process.env.DB_PASS;
-const PORT = 3000;
+const PORT = 3003;
 
 const mongoUrl = `mongodb+srv://${dbUser}:${dbPass}@cluster0.6y5yz.mongodb.net/${dbName}?retryWrites=true&w=majority`
 
