@@ -18,6 +18,14 @@ router.get("/",(req,res)=>{
     })
 })
 
+router.get('/:id',(req,res)=>{
+    User.findById(req.params.id).then(user=>{
+        res.status(200).json(user);
+    }).catch(err=>{
+        res.status(400).send("user not found");
+    });
+})
+
 router.post("/",(req,res)=>{
     let newUser=req.body;
     if(newUser.userName && newUser.password && newUser.password.length>=3){

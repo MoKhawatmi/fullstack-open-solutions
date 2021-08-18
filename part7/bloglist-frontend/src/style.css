@@ -1,0 +1,35 @@
+label{
+    display: block;
+}
+
+p{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.viewButton{
+    margin-left: 6px;
+}
+
+.blogPost{
+    margin-top: 3px;
+}
+
+.navbar{
+    background-color: lightgray;
+    width: 100%;
+    padding-left: 0;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    list-style-type: none;
+    display: inline-block;
+    margin: 0;
+}
+
+.navbar *{
+    display: inline;
+}
+
+.navbar li{
+    margin-right: 5px;
+}
